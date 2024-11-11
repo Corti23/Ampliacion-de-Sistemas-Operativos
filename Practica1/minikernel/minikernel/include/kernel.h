@@ -22,6 +22,10 @@
 #include "HAL.h"
 #include "llamsis.h"
 
+// Constantes mutex
+#define NO_RECURSIVO 0
+#define RECURSIVO 1
+
 /*
  *
  * Definicion del tipo que corresponde con el BCP.
@@ -82,6 +86,36 @@ typedef struct{
 	int (*fservicio)();
 } servicio;
 
+/*
+ *
+ * Definiciï¿œn del tipo que corresponde con un mutex no recursivo
+ *
+ */
+typedef struct{
+ int permiso=1;
+ char *nombre;
+ int mutexid;
+}mutex_no_recursivo;
+/*
+ *
+ * Definiciï¿œn del tipo que corresponde con un mutex recursivo
+ *
+ */
+typedef struct{
+ int n_permisos=0;
+ char *nombre;
+ int mutexid;
+}mutex_recursivo;
+
+/*
+ *
+ * Definiciï¿œn del tipo que corresponde con un almacen de mutex
+ *
+ */
+typedef struct{
+ mutex_recursivo * lista_recursivos;
+ mutex_no_recursivo * lista_no_recursivos;
+}almacen_mutex;
 
 /*
  * Prototipos de las rutinas que realizan cada llamada al sistema
@@ -97,6 +131,22 @@ int sis_obtener_id();
 servicio tabla_servicios[NSERVICIOS]={	{sis_crear_proceso},
 					{sis_terminar_proceso},
 					{sis_escribir}};
+
+//Metodo dormir
+int dormir(unsigned int segundos);
+// Metodos de mutex
+int crear_mutex(char *nombre, int tipo);
+int abrir_mutex(char *nombre);
+int lock(unsigned int mutexid);
+int unlock(unsigned int mutexid);
+int cerrar_mutex(unsigned int mutexid);
+// Metodos de almacen
+void add(mutex_recursivo mutex);
+void add(mutex_no_recursivo mutex);
+void delete(mutex_recursivo mutex);
+void delete(mutex_no_recursivo mutex);
+int check(char *nombre);
+int check(char *nombre);
 
 #endif /* _KERNEL_H */
 
