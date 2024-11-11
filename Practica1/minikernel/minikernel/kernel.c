@@ -15,6 +15,56 @@
 
 #include "kernel.h"	/* Contiene defs. usadas por este modulo */
 
+
+ /*
+
+/*-----------------------------------------------------------------------------
+//Funcion añadida dormir
+
+static int dormir(unsigned int segundos){
+	// hay que hacer que el programa actual salga del kernel durante segundos y meter otro proceso en el kernel mientras
+	// necesitamos s que se guarde el contexto y se haga un sleep
+	this.tiempo_dormir=segundos;
+	contexto=lista_listos.get(this.id)->contexto_regs;
+	//guardar contexto
+	lista_listos.delete(this);
+	lista_bloqueados.add(this);
+	int_reloj(lista_bloqueados->primero);
+}
+
+//-------------------------------------------------------------------------------------------------------------------------------------
+/*-----------------------------------------------------------------------------
+//Funcion aï¿œadida mutex recursivo y no recursivo
+
+static int crear_mutex(char* nombre, int tipo){
+	if (tipo=0){
+		mutex=mutex_no_recursivo;
+		mutex.nombre=nombre;
+		almacen_mutex.lista_no_recursivos.add(mutex);
+		//asignar mutex.mutexid algo y devolverlo
+	}
+	if (tipo=1){
+		mutex=mutex_recursivo;
+		mutex.nombre=nombre;
+		almacen_mutex.lista_recursivos.add(mutex);
+		//asignar mutex.mutexid algo y devolverlo
+	}
+}
+static int abrir_mutex(char *nombre){
+	int a=almacen_mutex.lista_recursivos.check(nombre);
+	int b=almacen_mutex.lista_no_recursivos.check(nombre);
+	if (a>=0){
+		return a;
+	}
+	if (b>=0){
+		return b;
+	}
+}
+
+*/
+
+
+
 /*
  *
  * Funciones relacionadas con la tabla de procesos:
