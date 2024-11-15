@@ -20,7 +20,7 @@ int main(){
 	printf("lector (%d): comienza\n", id);
 
 	printf("lector (%d): pulsa caracteres a partir de ahora\n", id);
-	car=leer_caracter();
+	car='a';
 	printf("lector (%d): has pulsado %c\n", id, car);
 
 	/* ahora duerme 3 segundos.*/
@@ -28,7 +28,7 @@ int main(){
 	dormir(3);
 
 	for (i=1; i<=10; i++) {
-		car=leer_caracter();
+		car+=1;
 		printf("lector (%d): has pulsado %c\n", id, car);
 	}
 

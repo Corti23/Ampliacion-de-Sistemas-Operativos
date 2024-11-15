@@ -31,7 +31,7 @@ int main(){
 FUNCIONALIDAD YA IMPLEMENTADA EN EL MATERIAL DE APOYO. UNA VEZ QUE IMPLEMENTE
 ALGO COMENTE ESTA PARTE Y DESCOMENTE LA PRUEBA CORRESPONDIENTE */
 
-	/*if (crear_proceso("simplon")<0)
+	if (crear_proceso("simplon")<0)
                 printf("Error creando simplon\n");
 
 	if (crear_proceso("excep_arit")<0)
@@ -39,50 +39,50 @@ ALGO COMENTE ESTA PARTE Y DESCOMENTE LA PRUEBA CORRESPONDIENTE */
 
 	if (crear_proceso("excep_mem")<0)
 		printf("Error creando excep_mem\n");
-	
+
 	if (crear_proceso("noexiste")<0)
-		printf("Error creando noexiste\n");*/
+		printf("Error creando noexiste\n");
 
 /* FIN PRUEBA INICIAL */
 
 // PRUEBA DE LA LLAMADA OBTENER_ID_PR
-{
+/*{
         int i;
         for (i=1; i<=2; i++)
                 if (crear_proceso("yosoy")<0)
                         printf("Error creando yosoy\n");
-}
+}*/
 
-/* PRUEBA DE LA LLAMADA DORMIR
-	if (crear_proceso("prueba_dormir")<0)
+// PRUEBA DE LA LLAMADA DORMIR
+/*	if (crear_proceso("prueba_dormir")<0)
 		printf("Error creando prueba_dormir\n");
 */
 
-/* PRIMERA PRUEBA DE MUTEX
-	if (crear_proceso("prueba_mutex1")<0)
+// PRIMERA PRUEBA DE MUTEX
+/*	if (crear_proceso("prueba_mutex1")<0)
 		printf("Error creando prueba_mutex1\n");
 */
 
-/* SEGUNDA PRUEBA DE MUTEX
-	if (crear_proceso("prueba_mutex2")<0)
+// SEGUNDA PRUEBA DE MUTEX
+/*	if (crear_proceso("prueba_mutex2")<0)
 		printf("Error creando prueba_mutex2\n");
 */
 
-/* PRIMERA PRUEBA DE ROUND-ROBIN
-	if (crear_proceso("prueba_RR1")<0)
+// PRIMERA PRUEBA DE ROUND-ROBIN
+/*	if (crear_proceso("prueba_RR1")<0)
 		printf("Error creando prueba_RR1\n");
 */
 
-/* SEGUNDA PRUEBA DE ROUND-ROBIN
-	if (crear_proceso("prueba_RR2")<0)
+// SEGUNDA PRUEBA DE ROUND-ROBIN
+/*	if (crear_proceso("prueba_RR2")<0)
 		printf("Error creando prueba_RR2\n");
 */
 
-/* PRUEBA DEL TERMINAL
-	if (crear_proceso("prueba_term")<0)
+// PRUEBA DEL TERMINAL
+/*	if (crear_proceso("prueba_term")<0)
 		printf("Error creando prueba_term\n");
 */
 
 	printf("init: termina\n");
-	return 0; 
+	return 0;
 }

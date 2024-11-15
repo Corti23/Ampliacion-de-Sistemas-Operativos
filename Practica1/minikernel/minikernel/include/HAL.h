@@ -1,16 +1,16 @@
 /*
  *  minikernel/include/HAL.h
  *
- *  Minikernel. Versi髇 1.0
+ *  Minikernel. Versi锟絥 1.0
  *
- *  Fernando P閞ez Costoya
+ *  Fernando P锟絩ez Costoya
  *
  */
 
 /*
  *
  * Fichero de cabecera que contiene los prototipos de las funciones
- * proporcionadas por el m骴ulo HAL.
+ * proporcionadas por el m锟絛ulo HAL.
  *
  * 	NO SE DEBE MODIFICAR
  *
@@ -20,10 +20,10 @@
 #define _HAL_H
 
 
-/* La versi髇 actual no usa en Linux las primitivas de gesti髇 de contexto
+/* La versi贸n actual no usa en Linux las primitivas de gesti贸n de contexto
    disponibles en algunos UNIX ("makecontext", "setcontext", ...), ya que,
-   que yo sepa, por ahora no est醤 implementadas. En su lugar recurre
-   a una versi髇 m醩 "cutre" basada en "setjmp". n una pr髕ima versi髇
+   que yo sepa, por ahora no est谩n implementadas. En su lugar recurre
+   a una versi贸n m谩s "cutre" basada en "setjmp". n una pr贸xima versi贸n
    deberian desaparecer. */
 
 #ifndef __linux__
@@ -35,7 +35,7 @@
 #include <linux/version.h>
 
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(2,4,1)
-/* Para Linux modernos que tambi閚 lo tienen */
+/* Para Linux modernos que tambi茅n lo tienen */
 #include <ucontext.h>
 
 #else
@@ -64,8 +64,6 @@ typedef struct {
 	long registros[NREGS];
 } contexto_t;
 
-
-
 /*
  *
  * Operaciones relacionadas con los dispositivos y las interrupciones.
@@ -82,23 +80,22 @@ void iniciar_cont_int();  /* iniciar controlador de interrupciones. */
 
 void instal_man_int(int nvector, void (*manej)()); /* instala un manejador */
 
-int fijar_nivel_int(int nivel); /* fija nivel de interrupci髇
+int fijar_nivel_int(int nivel); /* fija nivel de interrupci贸n
                                    del procesador devolviendo el previo */
 
 int viene_de_modo_usuario(); /* Devuelve verdadero si el modo previo de
-			    ejecuci髇 del procesador era usuario */
+			    ejecuci贸n del procesador era usuario */
 
-void activar_int_SW(); /* activa la interrupci髇 SW */
+void activar_int_SW(); /* activa la interrupci贸n SW */
 
 /*
  *
- * Operaci髇 de salvaguarda y recuperaci髇 de contexto hardware del proceso.
+ * Operaci贸n de salvaguarda y recuperaci贸n de contexto hardware del proceso.
  * Rutina que realiza el cambio de contexto. Si (contexto_a_salvar==NULL)
- * no salva contexto, s髄o restaura
+ * no salva contexto, s贸lo restaura
  *
  */
 void cambio_contexto(contexto_t *contexto_a_salvar, contexto_t *contexto_a_restaurar);
-
 
 /*
  *
@@ -107,7 +104,7 @@ void cambio_contexto(contexto_t *contexto_a_salvar, contexto_t *contexto_a_resta
  */
 
 /* crea mapa de memoria a partir de ejecutable "prog" devolviendo un
-descriptor de dicho mapa y la direcci髇 del punto de arranque del programa */
+descriptor de dicho mapa y la direcci贸n del punto de arranque del programa */
 void * crear_imagen(char *prog, void **dir_ini); 
 
 void * crear_pila(int tam); /* crea la pila del proceso */
@@ -122,7 +119,7 @@ void liberar_pila(void *pila);		/* libera la pila del proceso */
 
 /*
  *
- * Operaciones miscel醤eas
+ * Operaciones miscel谩neas
  *
  */
 
@@ -130,17 +127,16 @@ long leer_registro(int nreg);
 
 int escribir_registro(int nreg, long valor); 
 
-char leer_puerto(int dir_puerto); /* lee un car醕ter del puerto especificado */
+char leer_puerto(int dir_puerto); /* lee un car谩cter del puerto especificado */
 
-void halt();	/* Ejecuta una instrucci髇 HALT para parar UCP */
+void halt();	/* Ejecuta una instrucci贸n HALT para parar UCP */
 
 void panico(char *mens); /* muestra mensaje y termina SO */
 
 void escribir_ker(char *buffer, unsigned int longi); /* escribe en pantalla */
 
-#define printf printk /* evita uso de printf de bilioteca est醤dar */
+#define printf printk /* evita uso de printf de bilioteca est谩ndar */
 
 int printk(const char *, ...); /* escribe en pantalla con formato */
-
 
 #endif /* _HAL_H */
