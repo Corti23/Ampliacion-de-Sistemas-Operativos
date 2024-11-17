@@ -376,6 +376,7 @@ int sis_terminar_proceso() {
 
 /* obtener id del proceso */
 int obtener_id_pr() {
+	printk("->EL PROCESO %d OBTIENE SU ID", p_proc_actual -> id);
 	return p_proc_actual -> id;
 }
 
